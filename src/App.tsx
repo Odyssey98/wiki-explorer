@@ -173,6 +173,19 @@ function App() {
     window.open(url, '_blank');
   };
 
+  const handleLanguageChange = () => {
+    setLang(lang === 'zh' ? 'en' : 'zh');
+    setArticles([]);
+    setOffset(0);
+    setHasMore(true);
+  };
+
+  useEffect(() => {
+    if (articles.length === 0) {
+      fetchArticles(query || activeCategory);
+    }
+  }, [lang]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 顶部导航栏 */}
@@ -187,9 +200,10 @@ function App() {
             <span
               className={`${
                 isMobile ? 'text-lg' : 'text-xl'
-              } font-bold text-red-500`}
+              } font-bold text-red-500 flex items-center gap-1`}
             >
-              {t('appTitle')}
+              <span className="font-mono">Wiki</span>
+              <span className="font-sans">{t('appTitle')}</span>
             </span>
           </div>
           <div className="flex-1 max-w-xl mx-4">
@@ -210,7 +224,7 @@ function App() {
             </div>
           </div>
           <button
-            onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+            onClick={handleLanguageChange}
             className="px-3 py-1 text-sm font-medium text-gray-600 hover:text-red-500"
           >
             {lang === 'zh' ? 'EN' : '中'}

@@ -6,7 +6,7 @@ interface Translations {
 
 export const translations: Translations = {
   zh: {
-    appTitle: '探索发现',
+    appTitle: '探索',
     searchPlaceholder: '搜索感兴趣的内容...',
     noResults: '未找到相关结果',
     topics: {
@@ -23,7 +23,7 @@ export const translations: Translations = {
     },
   },
   en: {
-    appTitle: 'Explore & Discover',
+    appTitle: 'Explorer',
     searchPlaceholder: 'Search for content...',
     noResults: 'No results found',
     topics: {
